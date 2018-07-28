@@ -19,3 +19,4 @@
 * 模式匹配拷贝: modules/sc.sh
 * 获取系统日期: modules/date.sh
 * 关闭指定进程, 包含重试机制: modules/shutdown.sh
+* 批量处理文件行数: modules/bulk_process.sh
