@@ -2,6 +2,10 @@
 # coding=utf-8
 import os
 
+"""
+Just used by to clean storm logs, can use cron to schedule this script.
+"""
+
 
 def get_storm_logs_dir(path):
     dirs = os.listdir(path)
