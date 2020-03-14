@@ -45,7 +45,7 @@ def do_clean():
     LOG_PATH = '/tmp/soft/apache-storm-1.1.0/logs/workers-artifacts'
     print os.getcwd()
     if os.getcwd() == LOG_PATH:
-        get_storm_logs_dir('.')
+        get_storm_logs_dir('')
         return
     print '不在%s' % LOG_PATH
 
