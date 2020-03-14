@@ -1,2 +1,1 @@
-# Magic shell
-This project include many useful scripts.
+This project is renamed to my-swiss-army-knife.
