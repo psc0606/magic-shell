@@ -9,7 +9,7 @@ Comment: jar conflict check, run it only in local
 import os
 import sys
 import readline
-from interactive_input import HistoryCompleter
+from modules.interactive import HistoryCompleter
 
 
 def tip():
@@ -36,7 +36,7 @@ def tip():
 
 def check_jar(cp):
     if not os.path.exists(cp):
-        print "路径不存在"
+        print("路径不存在")
         return
     # 切换至当前工作目录
     os.chdir(cp)
@@ -44,17 +44,17 @@ def check_jar(cp):
     # 读取所有文件
     file_names = os.listdir(cp)
     class_dict = {}
-    print "扫描jar包..."
+    print("扫描jar包...")
     for fn in file_names:
         # 过滤非jar包
         if not fn.endswith('.jar'):
             continue
-        print fn
+        print(fn)
         # 读取jar包中文件
         try:
             lines = os.popen('jar -tvf ' + fn).readlines()
         except KeyboardInterrupt:
-            print "jar包扫描已被中止"
+            print("jar包扫描已被中止")
             sys.exit(1)
         for line in lines:
             tmp = line.split(' ')
@@ -79,7 +79,7 @@ def check_jar(cp):
         if len(v) == 1:
             # 没有jar包冲突
             continue
-        print k, "==>", v
+        print("{}==>".format(v))
         num += 1
     print("很有可能存在的冲突class文件个数: %d".format(num))
 

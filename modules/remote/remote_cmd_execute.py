@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/bin/env python3.7
 # coding=utf-8
 import paramiko
 import paramiko.agent

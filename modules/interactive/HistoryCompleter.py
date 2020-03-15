@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/bin/env python3
 # coding=utf-8
 
 import readline
@@ -14,14 +14,14 @@ import atexit
 示例1: 
     def echo:
         line = HistoryCompleter().get_input()
-        print line
+        print(line)
         
 示例2:
     def echo2:
         HistoryCompleter().loop_input(handler)
         
     def handler(self, line):
-        print line
+        print(line)
 """
 USER_HOME = os.environ['HOME']
 LOG_FILENAME = USER_HOME + '/.completer.log'
@@ -65,12 +65,15 @@ class HistoryCompleter(object):
         获取历史输入
         """
         # 列表解析语法
+        # xrange in py2 equals range in py3
         history_items = [readline.get_history_item(i)
-                         for i in xrange(1, readline.get_current_history_length() + 1)
+                         # for i in xrange(1, readline.get_current_history_length() + 1)
+                         for i in range(1, readline.get_current_history_length() + 1)
                          ]
         return self.__remove_dup(history_items)
 
-    def __remove_dup(self, list_items):
+    @staticmethod
+    def __remove_dup(list_items):
         """
         去掉列表中重复的元素
         """
@@ -113,7 +116,9 @@ class HistoryCompleter(object):
         try:
             # python不支持do-while
             while True:
-                line = raw_input(prompt).strip()
+                # input() in py3 equals raw_input() in py2
+                line = input(prompt).strip()
+                # line = raw_input(prompt).strip()
                 if line == '':
                     continue
                 # 输入不为空break
@@ -123,7 +128,7 @@ class HistoryCompleter(object):
             sys.exit(1)
 
         # 仅保留200条
-        readline.set_history_length(100)
+        readline.set_history_length(200)
         atexit.register(readline.write_history_file, HISTORY_FILENAME)
         return line
 
@@ -134,11 +139,13 @@ class HistoryCompleter(object):
         """
         try:
             while True:
-                line = raw_input(prompt).strip()
+                # raw_input() in py2 equals input() in py3
+                # line = raw_input(prompt).strip()
+                line = input(prompt).strip()
                 if line == '':
                     continue
                 if line == 'quit' or line == 'exit':
-                    print "Bye Bye~"
+                    print("Bye Bye~")
                     break
                 if handler is None:
                     break
