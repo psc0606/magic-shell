@@ -17,4 +17,4 @@ def get_google_code(token):
 
 
 # replace to your own token
-print get_google_code("abc")
+print(get_google_code("abc"))
