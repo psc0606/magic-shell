@@ -1,0 +1,15 @@
+// String s1 = "法%轮%大%法";
+// String s2 = "法轮大法";
+// String s1 = "③d";
+// String s2 = "123modi";
+String s1 = "法%轮%功";
+String s2 = "轮法功轮法功轮";
+
+LinkedHashMap<String, Integer> comparator = splitRuleWord(s1);
+LinkedHashMap<String, ArrayList<Integer>> source = splitSourceWord(s2);
+int[] sub_ind = compareWord(source, comparator);
+System.out.println(s2.substring(sub_ind[0], sub_ind[1]));
+
+String word = " 中 国 │??♂ 你说 脚趾℉甲";
+word = StringUtils.trimChars(word, SystemProp.getStopwordSet()); //stopwords中去掉了 ﹪ % ％
+System.out.println(word);

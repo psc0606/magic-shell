@@ -6,6 +6,11 @@ import cchardet as chardet
 
 """
 Translate the file encoding to other.
+The cchardet support GB18030 encoding, this encoding is back compatible with gbk(gbk is also back compatible with gb2312).
+If you use gb2312 or gbk encoding, cchardet will detect GB18030.
+
+Dependencies:
+https://pypi.org/project/cchardet/
 """
 
 
@@ -23,14 +28,15 @@ class FileEncodingTranslator:
         """
         with open(self.__path, 'rb') as f:
             msg = f.read()
-            print(msg)
+            # print(msg)
             dicts = chardet.detect(msg)
         return dicts["encoding"]
 
-    def translate_encoding(self, encoding):
+    def translate_encoding(self, encoding, is_replace=True):
         """
         translate the file encoding to other, then save it to /tmp/file_name.
         :param encoding: to target encoding of the file.
+        :param is_replace: whether to replace original file.
         """
         # get the simple file name to generate a tmp file with the specified code.
         tmp_path = os.path.join(os.path.sep, "tmp", os.path.basename(self.__path))
@@ -42,10 +48,11 @@ class FileEncodingTranslator:
             for line in fr:
                 content = str(line.encode(encoding), encoding)
                 fw.write(content)
-                print(content)
+                # print(content)
         fr.close()
         fw.close()
-        self.__replace_file(tmp_path, self.__path)
+        if is_replace:
+            self.__replace_file(tmp_path, self.__path)
 
     @staticmethod
     def __replace_file(src_path, target_path):
