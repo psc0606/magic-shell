@@ -11,7 +11,7 @@ class DirectoryTraversal(object):
     def __init__(self, root_path):
         """
         set current path.
-        :param root_path:
+        :param root_path: the root path to traverse.
         """
         self.__root_path = root_path
 
