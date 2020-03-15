@@ -30,4 +30,4 @@ class DirectoryTraversal(object):
                 print(files)
             else:
                 for file in files:
-                    callback(file, args, kwargs)
+                    callback(os.path.join(self.__root_path, dir_name, file), args, kwargs)
