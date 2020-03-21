@@ -19,7 +19,8 @@ if [ -r "$CONFIG_FILE" ]; then
     [[ "$DEBUG_X" = "-x" ]] && set -x
     echo "You selected ${ip}";
     # get ip string after `:`
-    line=`grep "${ip#*:}" "$CONFIG_FILE"`
+    # If config duplicate ip, only choose the fist one.
+    line=`grep "${ip#*:}" "$CONFIG_FILE" | head -n 1`
     # shellcheck disable=SC2206
     arr=(${line//,/ })
     PWD="${arr[3]}"
