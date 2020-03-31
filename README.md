@@ -39,5 +39,7 @@ Ubuntu:
 
 At last, run script like this:
 `./jump-select.sh <path_to_config> [-x]`
+
 If you want to debug the script, with `-x` please.
+
 ![jump-select-demo](docs/jump-select-demo.png)
