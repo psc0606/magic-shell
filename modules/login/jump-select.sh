@@ -21,11 +21,15 @@ if [ -r "$CONFIG_FILE" ]; then
     # get ip string after `:`
     # If config duplicate ip, only choose the fist one.
     line=`grep "${ip#*:}" "$CONFIG_FILE" | head -n 1`
-    # shellcheck disable=SC2206
-    arr=(${line//,/ })
+    # split string into array, this is the prefer way.
+    IFS=',' read -ra arr <<< "$line"
     PWD="${arr[3]}"
     USER="${arr[1]}"
     IP="${arr[2]}"
+
+    # Support wildcard `*` to match any ip address
+    [ "${IP}" = '*' ] && read -rp "Input ip, please: " IP
+
     # shellcheck disable=SC2124
     REMOTE_CMD="${arr[@]:4}"
     CMD="sshpass -p '$PWD' ssh -t -o ServerAliveInterval=60 -o StrictHostKeyChecking=no ${USER}@${IP} '${REMOTE_CMD}; bash'"
