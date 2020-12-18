@@ -1,3 +1,4 @@
+<a title="Hit" target="_blank" href="https://github.com/psc0606/python-tools"><img src="https://hits.b3log.org/psc0606/python-tools.svg"></a>
 # PKG
 ## package
 python3.7 setup.py check
