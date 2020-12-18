@@ -1,4 +1,5 @@
-# package
+# PKG
+## package
 python3.7 setup.py check
 python3.7 setup.py sdist
 python3.7 setup.py install
@@ -11,3 +12,6 @@ python3.7 setup.py bdist_rpm
 
 ## uninstall
 You must rm -fr the install directory.
+
+# UPDATE
+- introduce SimpleHTTPServer
