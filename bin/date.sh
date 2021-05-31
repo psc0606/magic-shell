@@ -7,3 +7,5 @@ date -d '-1 min' +%Y%m%d%H%M
 
 #Format to date.
 date -d '-1 min' +%Y%m%d
+
+date -d "+1 min 20210524" +'%Y-%m-%d %H:%M'
